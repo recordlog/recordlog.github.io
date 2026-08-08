@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Last 5 Played Albums</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: #1a1a2e;
+            color: #e0e0e0;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        h1 {
+            text-align: center;
+            color: #e94560;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .album-card {
+            background: #16213e;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            display: flex;
+            gap: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+        .album-image {
+            flex-shrink: 0;
+            width: 200px;
+            height: 200px;
+            border-radius: 8px;
+            object-fit: cover;
+            background: #0f3460;
+        }
+        .album-details {
+            flex: 1;
+            min-width: 0;
+        }
+        .album-artist {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #e94560;
+            margin-bottom: 0.25rem;
+        }
+        .album-name {
+            font-size: 1.2rem;
+            color: #a8a8b3;
+            margin-bottom: 0.75rem;
+        }
+        .album-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 0.75rem;
+            font-size: 0.9rem;
+        }
+        .meta-item {
+            color: #8888a0;
+        }
+        .meta-item span {
+            color: #c0c0d0;
+            font-weight: 500;
+        }
+        .genres {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+        }
+        .genre-tag {
+            background: #0f3460;
+            color: #a8a8b3;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        .discogs-link {
+            display: inline-block;
+            color: #e94560;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .discogs-link:hover {
+            color: #ff6b81;
+            text-decoration: underline;
+        }
+        .tracklist-toggle {
+            background: #0f3460;
+            color: #a8a8b3;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            transition: background 0.2s;
+        }
+        .tracklist-toggle:hover {
+            background: #1a4a7a;
+        }
+        .tracklist {
+            display: none;
+            margin-top: 0.75rem;
+            background: #0f3460;
+            border-radius: 8px;
+            padding: 1rem;
+        }
+        .tracklist.visible {
+            display: block;
+        }
+        .track {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 1rem;
+            padding: 0.4rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .track:last-child {
+            border-bottom: none;
+        }
+        .track-title {
+            color: #c0c0d0;
+        }
+        .track-duration {
+            color: #666680;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Last 5 Played Albums</h1>
+        
+        <div class="album-card">
+            
+            <img class="album-image" src="https://i.discogs.com/iWU1pXPYm0v5c6pJUCrGasayy8wkf1SaOy_IZJlsSN4/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTY2MDUz/MTYtMTQyMjkzNDgy/MC05MjYzLmpwZWc.jpeg" alt="Goodbye Party, The - Silver Blues">
+            
+            <div class="album-details">
+                <div class="album-artist">Goodbye Party, The</div>
+                <div class="album-name">Silver Blues</div>
+                <div class="album-meta">
+                    <div class="meta-item">Date: <span>8/7/2026</span></div>
+                    <div class="meta-item">Side(s): <span>Both</span></div>
+                    <div class="meta-item">Year: <span>2014</span></div>
+                </div>
+                
+                <div class="genres">
+                    
+                    <span class="genre-tag">Rock</span>
+                    
+                </div>
+                
+                
+                <a class="discogs-link" href="https://www.discogs.com/master/826292-The-Goodbye-Party-Silver-Blues" target="_blank" rel="noopener noreferrer">View on Discogs</a>
+                
+                
+                <button class="tracklist-toggle" onclick="this.nextElementSibling.classList.toggle('visible'); this.textContent = this.textContent === 'Show Tracklist' ? 'Hide Tracklist' : 'Show Tracklist'">Show Tracklist</button>
+                <div class="tracklist">
+                    
+                    <div class="track">
+                        <span class="track-title">Heavenly Blues</span>
+                        <span class="track-duration">3:53</span>
+                    </div>
+                    
+                    <div class="track">
+                        <span class="track-title">Crossed Out</span>
+                        <span class="track-duration">3:11</span>
+                    </div>
+                    
+                    <div class="track">
+                        <span class="track-title">I&#39;m Not Going To Your Heaven</span>
+                        <span class="track-duration">4:06</span>
+                    </div>
+                    
+                    <div class="track">
+                        <span class="track-title">Bells Underwater</span>
+                        <span class="track-duration">2:13</span>
+                    </div>
+                    
+                    <div class="track">
+                        <span class="track-title">Personal Heavens</span>
+                        <span class="track-duration">1:38</span>
+                    </div>
+                    
+                    <div class="track">
+                        <span class="track-title">27 Times</span>
+                        <span class="track-duration">2:25</span>
+                    </div>
+                    
+                    <div class="track">
+                        <span class="track-title">Louder Than Summer</span>
+                        <span class="track-duration">2:56</span>
+                    </div>
+                    
+                    <div class="track">
+                        <span class="track-title">Disrepair</span>
+                        <span class="track-duration">2:25</span>
+                    </div>
+                    
+                    <div class="track">
+                        <span class="track-title">Wash Away</span>
+                        <span class="track-duration">2:03</span>
+                    </div>
+                    
+                    <div class="track">
+                        <span class="track-title">Funeral Season</span>
+                        <span class="track-duration">4:04</span>
+                    </div>
+                    
+                    <div class="track">
+                        <span class="track-title">New Decay</span>
+                        <span class="track-duration">3:16</span>
+                    </div>
+                    
+                    <div class="track">
+                        <span class="track-title">White On White</span>
+                        <span class="track-duration">2:53</span>
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        <div class="album-card">
+            
+            <img class="album-image" src="https://i.discogs.com/M2yc5OJZPdVoDm2_UlRRXuDlDguamLLSdnbziNmZoQI/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTI2MDc0/MjQtMTYzMDYwMTA4/Ny0xMTk5LmpwZWc.jpeg" alt="Beatles, The - Abbey Road">
+            
+            <div class="album-details">
+                <div class="album-artist">Beatles, The</div>
+                <div class="album-name">Abbey Road</div>
+                <div class="album-meta">
+                    <div class="meta-item">Date: <span>8/7/2026</span></div>
+                    <div class="meta-item">Side(s): <span>Both</span></div>
+                    <div class="meta-item">Year: <span>1969</span></div>
+                </div>
+                
+                <div class="genres">
+                    
+                    <span class="genre-tag">Rock</span>
+                    
+                </div>
+                
+                
+                <a class="discogs-link" href="https://www.discogs.com/master/24047-The-Beatles-Abbey-Road" target="_blank" rel="noopener noreferrer">View on Discogs</a>
+                
+                
+                <button class="tracklist-toggle" onclick="this.nextElementSibling.classList.toggle('visible'); this.textContent = this.textContent === 'Show Tracklist' ? 'Hide Tracklist' : 'Show Tracklist'">Show Tracklist</button>
+                <div class="tracklist">
+                    
+                    <div class="track">
+                        <span class="track-title">Come Together</span>
+                        
+                    </div>
+                    
+                    <div class="track">
+                        <span class="track-title">Something</span>
+                        
+                    </div>
+                    
+                    <div class="track">
+                        <span class="track-title">Maxwell&#39;s Silver Hammer</span>
+                        
+                    </div>
+                    
+                    <div class="track">
+                        <span class="track-title">Oh! Darling</span>
+                        
+                    </div>
+                    
+                    <div class="track">
+                        <span class="track-title">Octopus&#39;s Garden</span>
+                        
+                    </div>
+                    
+                    <div class="track">
+                        <span class="track-title">I Want You (She&#39;s So Heavy)</span>
+                        
+                    </div>
+                    
+                    <div class="track">
+                        <span class="track-title">Here Comes The Sun</span>
+                        
+                    </div>
+                    
+                    <div class="track">
+                        <span class="track-title">Because</span>
+                        
+                    </div>
+                    
+                    <div class="track">
+                        <span class="track-title">You Never Give Me Your Money</span>
+                        
+                    </div>
+                    
+                    <div class="track">
+                        <span class="track-title">Sun King</span>
+                        
+                    </div>
+                    
+                    <div class="track">
+                        <span class="track-title">Mean Mr. Mustard</span>
+                        
+                    </div>
+                    
+                    <div class="track">
+                        <span class="track-title">Polythene Pam</span>
+                        
+                    </div>
+                    
+                    <div class="track">
+                        <span class="track-title">She Came In Through The Bathroom Window</span>
+                        
+                    </div>
+                    
+                    <div class="track">
+                        <span class="track-title">Golden Slumbers</span>
+                        
+                    </div>
+                    
+                    <div class="track">
+                        <span class="track-title">Carry That Weight</span>
+                        
+                    </div>
+                    
+                    <div class="track">
+                        <span class="track-title">The End</span>
+                        
+                    </div>
+                    
+                    <div class="track">
+                        <span class="track-title">Her Majesty</span>
+                        
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        <div class="album-card">
+            
+            <img class="album-image" src="https://i.discogs.com/dezEU5eXHV_e64sQocAllC9ySDFpz62x3CMLrVrGTKI/rs:fit/g:sm/q:90/h:498/w:500/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTI0NjUx/NTAtMTI5NjM1MTg3/MC5qcGVn.jpeg" alt="Miles Davis - Volume 2">
+            
+            <div class="album-details">
+                <div class="album-artist">Miles Davis</div>
+                <div class="album-name">Volume 2</div>
+                <div class="album-meta">
+                    <div class="meta-item">Date: <span>8/7/2026</span></div>
+                    <div class="meta-item">Side(s): <span>Both</span></div>
+                    <div class="meta-item">Year: <span>1971</span></div>
+                </div>
+                
+                <div class="genres">
+                    
+                    <span class="genre-tag">Jazz</span>
+                    
+                </div>
+                
+                
+                <a class="discogs-link" href="https://www.discogs.com/master/337077-Miles-Davis-Miles-Davis" target="_blank" rel="noopener noreferrer">View on Discogs</a>
+                
+                
+                <button class="tracklist-toggle" onclick="this.nextElementSibling.classList.toggle('visible'); this.textContent = this.textContent === 'Show Tracklist' ? 'Hide Tracklist' : 'Show Tracklist'">Show Tracklist</button>
+                <div class="tracklist">
+                    
+                    <div class="track">
+                        <span class="track-title">Tempus Fugit</span>
+                        <span class="track-duration">3:48</span>
+                    </div>
+                    
+                    <div class="track">
+                        <span class="track-title">Kelo</span>
+                        <span class="track-duration">3:15</span>
+                    </div>
+                    
+                    <div class="track">
+                        <span class="track-title">Enigma</span>
+                        <span class="track-duration">3:20</span>
+                    </div>
+                    
+                    <div class="track">
+                        <span class="track-title">Ray&#39;s Idea</span>
+                        <span class="track-duration">3:40</span>
+                    </div>
+                    
+                    <div class="track">
+                        <span class="track-title">How Deep Is The Ocean (How High Is The Sky)</span>
+                        <span class="track-duration">4:37</span>
+                    </div>
+                    
+                    <div class="track">
+                        <span class="track-title">C.T.A. (Alternate Master)</span>
+                        <span class="track-duration">3:12</span>
+                    </div>
+                    
+                    <div class="track">
+                        <span class="track-title">Dear Old Stockholm (Varmeland)</span>
+                        <span class="track-duration">4:09</span>
+                    </div>
+                    
+                    <div class="track">
+                        <span class="track-title">Chance It</span>
+                        <span class="track-duration">3:02</span>
+                    </div>
+                    
+                    <div class="track">
+                        <span class="track-title">Yesterdays</span>
+                        <span class="track-duration">3:43</span>
+                    </div>
+                    
+                    <div class="track">
+                        <span class="track-title">Donna (Alternate Master)</span>
+                        <span class="track-duration">3:09</span>
+                    </div>
+                    
+                    <div class="track">
+                        <span class="track-title">C.T.A.</span>
+                        <span class="track-duration">3:30</span>
+                    </div>
+                    
+                    <div class="track">
+                        <span class="track-title">Woody &#39;N You (Alternate Master)</span>
+                        <span class="track-duration">3:30</span>
+                    </div>
+                    
+                    <div class="track">
+                        <span class="track-title">Take Off</span>
+                        <span class="track-duration">3:39</span>
+                    </div>
+                    
+                    <div class="track">
+                        <span class="track-title">Weirdo</span>
+                        <span class="track-duration">4:50</span>
+                    </div>
+                    
+                    <div class="track">
+                        <span class="track-title">Woody&#39;n You</span>
+                        <span class="track-duration">3:23</span>
+                    </div>
+                    
+                    <div class="track">
+                        <span class="track-title">I Waited For You</span>
+                        <span class="track-duration">3:27</span>
+                    </div>
+                    
+                    <div class="track">
+                        <span class="track-title">Ray&#39;s Idea</span>
+                        <span class="track-duration">3:47</span>
+                    </div>
+                    
+                    <div class="track">
+                        <span class="track-title">Donna</span>
+                        <span class="track-duration">3:11</span>
+                    </div>
+                    
+                    <div class="track">
+                        <span class="track-title">Well You Needn&#39;t</span>
+                        <span class="track-duration">5:20</span>
+                    </div>
+                    
+                    <div class="track">
+                        <span class="track-title">The Leap</span>
+                        <span class="track-duration">4:32</span>
+                    </div>
+                    
+                    <div class="track">
+                        <span class="track-title">Lazy Susan</span>
+                        <span class="track-duration">4:00</span>
+                    </div>
+                    
+                    <div class="track">
+                        <span class="track-title">Tempus Fugit</span>
+                        <span class="track-duration">3:55</span>
+                    </div>
+                    
+                    <div class="track">
+                        <span class="track-title">It Never Entered My Mind</span>
+                        <span class="track-duration">3:55</span>
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        <div class="album-card">
+            
+            <div class="album-image"></div>
+            
+            <div class="album-details">
+                <div class="album-artist">Streelight Manifesto</div>
+                <div class="album-name">The Hands that Thieve</div>
+                <div class="album-meta">
+                    <div class="meta-item">Date: <span>8/7/2026</span></div>
+                    <div class="meta-item">Side(s): <span>Both</span></div>
+                    
+                </div>
+                
+                
+                
+            </div>
+        </div>
+        
+        <div class="album-card">
+            
+            <img class="album-image" src="https://i.discogs.com/5E9pY5ZwUNBnH5HPjUrAoRVXsABuOrs6a6jDtyz88VY/rs:fit/g:sm/q:90/h:400/w:400/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTQ0NzEx/NDctMTM2NTgwNDk2/OC03MDk5LmpwZWc.jpeg" alt="One Man Army - She&#39;s an Alarm">
+            
+            <div class="album-details">
+                <div class="album-artist">One Man Army</div>
+                <div class="album-name">She&#39;s an Alarm</div>
+                <div class="album-meta">
+                    <div class="meta-item">Date: <span>8/7/2026</span></div>
+                    <div class="meta-item">Side(s): <span>Both</span></div>
+                    <div class="meta-item">Year: <span>2012</span></div>
+                </div>
+                
+                <div class="genres">
+                    
+                    <span class="genre-tag">Rock</span>
+                    
+                </div>
+                
+                
+                <a class="discogs-link" href="https://www.discogs.com/master/544417-One-Man-Army-2-Shes-An-Alarm" target="_blank" rel="noopener noreferrer">View on Discogs</a>
+                
+                
+                <button class="tracklist-toggle" onclick="this.nextElementSibling.classList.toggle('visible'); this.textContent = this.textContent === 'Show Tracklist' ? 'Hide Tracklist' : 'Show Tracklist'">Show Tracklist</button>
+                <div class="tracklist">
+                    
+                    <div class="track">
+                        <span class="track-title">I.T.I.A.L.S.</span>
+                        
+                    </div>
+                    
+                    <div class="track">
+                        <span class="track-title">Plastique</span>
+                        
+                    </div>
+                    
+                    <div class="track">
+                        <span class="track-title">Any Minute</span>
+                        
+                    </div>
+                    
+                    <div class="track">
+                        <span class="track-title">I Got Hung Up</span>
+                        
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>
