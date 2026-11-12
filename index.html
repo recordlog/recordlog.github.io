@@ -12,14 +12,14 @@
         }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            background: #1a1a2e;
+            background: #0b2a1f;
             color: #e0e0e0;
             min-height: 100vh;
             padding: 2rem;
         }
         h1 {
             text-align: center;
-            color: #e94560;
+            color: #ff6b6b;
             margin-bottom: 2rem;
             font-size: 2rem;
         }
@@ -28,7 +28,7 @@
             margin: 0 auto;
         }
         .album-card {
-            background: #16213e;
+            background: #123d2c;
             border-radius: 12px;
             padding: 1.5rem;
             margin-bottom: 2rem;
@@ -42,7 +42,7 @@
             height: 200px;
             border-radius: 8px;
             object-fit: cover;
-            background: #0f3460;
+            background: #1a5238;
         }
         .album-details {
             flex: 1;
@@ -51,12 +51,12 @@
         .album-artist {
             font-size: 1.5rem;
             font-weight: 700;
-            color: #e94560;
+            color: #ff6b6b;
             margin-bottom: 0.25rem;
         }
         .album-name {
             font-size: 1.2rem;
-            color: #a8a8b3;
+            color: #c9dccf;
             margin-bottom: 0.75rem;
         }
         .album-meta {
@@ -67,10 +67,10 @@
             font-size: 0.9rem;
         }
         .meta-item {
-            color: #8888a0;
+            color: #a9c7b4;
         }
         .meta-item span {
-            color: #c0c0d0;
+            color: #e3efe6;
             font-weight: 500;
         }
         .genres {
@@ -80,26 +80,26 @@
             margin-bottom: 0.75rem;
         }
         .genre-tag {
-            background: #0f3460;
-            color: #a8a8b3;
+            background: #1a5238;
+            color: #c9dccf;
             padding: 0.25rem 0.75rem;
             border-radius: 20px;
             font-size: 0.8rem;
         }
         .discogs-link {
             display: inline-block;
-            color: #e94560;
+            color: #ff6b6b;
             text-decoration: none;
             font-weight: 500;
             transition: color 0.2s;
         }
         .discogs-link:hover {
-            color: #ff6b81;
+            color: #ffa0a0;
             text-decoration: underline;
         }
         .tracklist-toggle {
-            background: #0f3460;
-            color: #a8a8b3;
+            background: #1a5238;
+            color: #c9dccf;
             border: none;
             padding: 0.5rem 1rem;
             border-radius: 6px;
@@ -109,12 +109,12 @@
             transition: background 0.2s;
         }
         .tracklist-toggle:hover {
-            background: #1a4a7a;
+            background: #2d7050;
         }
         .tracklist {
             display: none;
             margin-top: 0.75rem;
-            background: #0f3460;
+            background: #1a5238;
             border-radius: 8px;
             padding: 1rem;
         }
@@ -132,18 +132,73 @@
             border-bottom: none;
         }
         .track-title {
-            color: #c0c0d0;
+            color: #e3efe6;
         }
         .track-duration {
-            color: #666680;
+            color: #8fb09b;
             font-size: 0.85rem;
         }
+         
+        body {
+            background: radial-gradient(ellipse at top, #14503a 0%, #0b2a1f 70%) fixed;
+            position: relative;
+            overflow-x: hidden;
+        }
+        body::before,
+        body::after {
+            content: '';
+            position: fixed;
+            top: -100%;
+            left: 0;
+            width: 100%;
+            height: 200%;
+            pointer-events: none;
+            z-index: 0;
+            background-image:
+                radial-gradient(3px 3px at 20px 30px, #fff, transparent),
+                radial-gradient(2px 2px at 90px 120px, #fff, transparent),
+                radial-gradient(3px 3px at 160px 60px, #fff, transparent),
+                radial-gradient(2px 2px at 230px 180px, #fff, transparent),
+                radial-gradient(2px 2px at 300px 90px, #fff, transparent);
+            background-size: 340px 220px;
+            opacity: 0.7;
+            animation: snowfall 18s linear infinite;
+        }
+        body::after {
+            background-size: 260px 300px;
+            opacity: 0.45;
+            animation-duration: 28s;
+        }
+        @keyframes snowfall {
+            to { transform: translateY(50%); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            body::before, body::after { animation: none; }
+        }
+        .container, h1, p { position: relative; z-index: 1; }
+        h1 {
+            color: #f6d365;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+        }
+        h1::before { content: '🎄 '; }
+        h1::after { content: ' 🎁'; }
+        .album-card {
+            border: 2px solid #c8102e;
+            position: relative;
+            z-index: 1;
+        }
+        .album-artist { color: #f6d365; }
+        button[type="submit"] { background: #c8102e; }
+        button[type="submit"]:hover { background: #e63946; }
+        .nav-link a, .discogs-link { color: #f6d365; }
+        .genre-tag { border: 1px solid #c8102e; }
+        .checkbox-item input[type="checkbox"] { accent-color: #c8102e; }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Last 5 Played Albums</h1>
-        <p style="text-align:center;color:#666680;font-size:0.85rem;margin-bottom:1.5rem;">Generated: 2026-11-12 01:07:20 UTC</p>
+        <p style="text-align:center;color:#8fb09b;font-size:0.85rem;margin-bottom:1.5rem;">Generated: 2026-11-12 01:08:46 UTC</p>
         
         <div class="album-card">
             
