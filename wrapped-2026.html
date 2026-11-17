@@ -50,6 +50,10 @@
   .covers .art { width:100%; height:auto; aspect-ratio:1; }
   .covers figcaption { font-size:.7rem; line-height:1.2; margin-top:.3rem; font-weight:700; overflow-wrap:anywhere; }
   .covers figcaption small { display:block; font-weight:500; opacity:.75; }
+  .video { display:block; position:relative; aspect-ratio:16/9; margin-top:1.5rem; border-radius:14px; overflow:hidden; background:#000; color:#fff; text-decoration:none; }
+  .video img { width:100%; height:100%; object-fit:cover; opacity:.75; display:block; }
+  .video .play { position:absolute; inset:0; display:grid; place-items:center; font-weight:800; font-size:1.25rem; text-shadow:0 2px 12px rgba(0,0,0,.7); }
+  .video iframe { position:absolute; inset:0; width:100%; height:100%; border:0; }
   .loc { background:var(--card); border-radius:14px; padding:.9rem 1.1rem; margin-bottom:.75rem; }
   .loc .row { display:flex; justify-content:space-between; gap:1rem; align-items:baseline; }
   .months { display:grid; gap:.5rem; }
@@ -175,6 +179,8 @@
         <div><div class="t">The White Album</div><div class="m">The Beatles · 6 spins</div><div class="bar" style="width:60%"></div></div></li>
       
     </ol>
+    <a class="video" href="https://www.youtube.com/watch?v=ll3CMgiUPuU" target="_blank" rel="noopener" data-id="ll3CMgiUPuU">
+      <img src="https://i.ytimg.com/vi/ll3CMgiUPuU/hqdefault.jpg" alt="" loading="lazy" referrerpolicy="no-referrer"><span class="play">▶ Press play</span></a>
   </div>
 </section>
 
@@ -919,6 +925,17 @@
 
 
 <script>
+  
+  document.querySelectorAll('a.video').forEach(a => a.addEventListener('click', e => {
+    e.preventDefault();
+    const f = document.createElement('iframe');
+    f.src = 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent(a.dataset.id) + '?autoplay=1&rel=0';
+    f.allow = 'autoplay; encrypted-media; picture-in-picture';
+    f.allowFullscreen = true;
+    f.title = 'Video';
+    a.removeAttribute('href');
+    a.replaceChildren(f);
+  }, { once: true }));
   
   
   const slides = document.querySelectorAll('.slide');
