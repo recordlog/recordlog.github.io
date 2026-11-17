@@ -55,9 +55,11 @@
   .playbtn.on { animation:none; background:rgba(255,255,255,.2); color:#fff; box-shadow:none; }
   @keyframes pulse { 0%,100% { box-shadow:0 8px 28px rgba(0,0,0,.35), 0 0 0 0 rgba(255,255,255,.55); } 50% { box-shadow:0 8px 28px rgba(0,0,0,.35), 0 0 0 14px rgba(255,255,255,0); } }
   [hidden] { display:none !important; }
-  .player { position:fixed; top:max(.6rem, env(safe-area-inset-top)); right:.6rem; z-index:50; width:min(300px, 46vw); aspect-ratio:16/9; border-radius:12px; overflow:hidden; background:#000; box-shadow:0 10px 40px rgba(0,0,0,.55); }
-  .player iframe { width:100%; height:100%; border:0; display:block; }
-  .player .close { position:absolute; top:.3rem; right:.3rem; z-index:2; width:1.7rem; height:1.7rem; border:0; border-radius:50%; background:rgba(0,0,0,.65); color:#fff; font-size:1rem; line-height:1; cursor:pointer; }
+   
+  .player { position:fixed; top:0; left:0; right:0; z-index:50; height:calc(3.4rem + env(safe-area-inset-top)); padding:env(safe-area-inset-top) .75rem 0; display:flex; align-items:center; gap:.75rem; background:rgba(10,10,12,.85); -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px); box-shadow:0 2px 14px rgba(0,0,0,.4); }
+  .player iframe { flex:none; height:2.5rem; aspect-ratio:16/9; border:0; border-radius:6px; background:#000; }
+  .player .label { flex:1; min-width:0; font-size:.85rem; font-weight:700; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .player .close { flex:none; width:2rem; height:2rem; border:0; border-radius:50%; background:rgba(255,255,255,.18); color:#fff; font-size:1.1rem; line-height:1; cursor:pointer; }
   .loc { background:var(--card); border-radius:14px; padding:.9rem 1.1rem; margin-bottom:.75rem; }
   .loc .row { display:flex; justify-content:space-between; gap:1rem; align-items:baseline; }
   .months { display:grid; gap:.5rem; }
@@ -927,7 +929,7 @@
 
 
 
-<div class="player" id="player" hidden><button class="close" id="playerclose" aria-label="Stop the music">×</button></div>
+<div class="player" id="player" hidden><span class="label">♪ Soundtrack playing</span><button class="close" id="playerclose" aria-label="Stop the music">×</button></div>
 
 <script>
   
